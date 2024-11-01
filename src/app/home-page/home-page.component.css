@@ -1,0 +1,6 @@
+.divider {
+    margin: 30px auto;
+    width: 80%;  /* Adjust width as needed */
+    height: 2px;
+    background-color: #424345; /* Light gray */
+}
