@@ -6,11 +6,18 @@ import { SignupComponent } from './signup/signup.component';
 import { UserDashboardComponent } from './user-dashboard/user-dashboard.component';
 
 const routes: Routes = [
-  {path: "", component: HomePageComponent, pathMatch: "full"},
-  {path: 'home', component: HomePageComponent},
-  {path: 'login', component: LoginComponent},
-  {path: 'signup', component: SignupComponent},
-  {path: 'userDashborad', component: UserDashboardComponent}
+  {path: "",
+   component: HomePageComponent,
+  pathMatch: "full"
+  },
+  {path: 'login',
+   component: LoginComponent
+  },
+  {path: 'signup',
+   component: SignupComponent
+  },
+  {path: 'userDashborad',
+   component: UserDashboardComponent}
 ];
 
 @NgModule({

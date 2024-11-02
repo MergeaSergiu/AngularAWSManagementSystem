@@ -27,7 +27,9 @@
         </div>
   
         <div>
-          <button type="submit" class="flex w-full justify-center rounded-md bg-indigo-600 mt-7 px-3 py-1.5 text-sm/6 font-semibold text-white shadow-sm hover:bg-indigo-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600" [disabled]="!authForm.valid">Sign Up</button>
+          <button type="submit" class="flex w-full justify-center rounded-md bg-indigo-600 mt-7 px-3 py-1.5 text-sm/6 font-semibold text-white shadow-sm hover:bg-indigo-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600"
+          [ngClass]="{ 'bg-indigo-600 hover:bg-indigo-500': authForm.valid, 'bg-gray-400': !authForm.valid }"
+          [disabled]="!authForm.valid">Sign Up</button>
         </div>
         <div>
             <button routerLink="" type="button" class="flex w-full justify-center rounded-md bg-blue-900 mt-7 px-3 py-1.5 text-sm/6 font-semibold text-white shadow-sm hover:bg-indigo-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600">Home</button>
