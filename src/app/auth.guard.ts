@@ -11,11 +11,11 @@ export const authGuard: CanActivateFn = (
     const router = inject(Router);
 
     const expectedRole = route.data['role'];
-    if(registrationService.isLogedIn() && expectedRole == registrationService.getUserRole()){
+    if(registrationService.isLogedIn() && expectedRole == registrationService.getUserRole() ){
       return true;
     } else{
-      router.navigate(['login']);
-      registrationService.logedOut()
+      router.navigate(['/login']);
+      registrationService.logedOut();
       return false;
     }
 };

@@ -35,8 +35,8 @@ export class RegistrationService{
     localStorage.setItem('role', role); 
    }
 
-   public getUserRole(){
-    localStorage.getItem('role'); 
+   public getUserRole(): string | null {
+    return localStorage.getItem('role'); 
    }
 
    public isLogedIn(){
@@ -47,7 +47,7 @@ export class RegistrationService{
       localStorage.removeItem('access_JWT');
       localStorage.removeItem('refresh_JWT');
       localStorage.removeItem('role');
-      this.router.navigate(['']);
+      this.router.navigate(['login']);
    }
    
    
