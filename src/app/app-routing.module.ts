@@ -4,6 +4,7 @@ import { HomePageComponent } from './home-page/home-page.component';
 import { LoginComponent } from './login/login.component';
 import { SignupComponent } from './signup/signup.component';
 import { UserDashboardComponent } from './user-dashboard/user-dashboard.component';
+import { authGuard } from './auth.guard';
 
 const routes: Routes = [
   {path: "",
@@ -17,7 +18,10 @@ const routes: Routes = [
    component: SignupComponent
   },
   {path: 'userDashborad',
-   component: UserDashboardComponent}
+   component: UserDashboardComponent,
+   canActivate: [authGuard],
+   data: { role: 'USER' }
+  }
 ];
 
 @NgModule({

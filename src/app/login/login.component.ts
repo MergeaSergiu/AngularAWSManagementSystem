@@ -27,6 +27,7 @@ export class LoginComponent {
         next:  (response: LoginResponse) => {
           this.registrationService.setToken(response.access_JWT);
           this.registrationService.setRefreshToken(response.refresh_JWT);
+          this.registrationService.setUserRole(response.role);
           this.router.navigate(['userDashborad']);
         },  error: (error) => {
           this.message = error;
