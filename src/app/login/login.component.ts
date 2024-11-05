@@ -27,14 +27,14 @@ export class LoginComponent {
         next:  (response: LoginResponse) => {
           this.registrationService.setToken(response.access_JWT);
           this.registrationService.setRefreshToken(response.refresh_JWT);
-          this.router.navigate(['userDashborad'])
-        },  error: () => {
-          this.message = "Something went wrong with your request";
+          this.router.navigate(['userDashborad']);
+        },  error: (error) => {
+          this.message = error;
           setTimeout(() => {
             this.message = '';
             this.cdr.detectChanges();
         }, 3000);
-        }
+      }
     });
 
     form.reset();
