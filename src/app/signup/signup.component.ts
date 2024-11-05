@@ -29,8 +29,8 @@ export class SignupComponent implements OnInit{
             this.message = '';
             this.cdr.detectChanges();
         }, 3000);
-        },  error: () => {
-          this.message = "Something went wrong with your request";
+        },  error: (error) => {
+          this.message = error;
           setTimeout(() => {
             this.message = '';
             this.cdr.detectChanges();
