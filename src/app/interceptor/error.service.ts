@@ -24,9 +24,7 @@ export class ErrorService implements HttpInterceptor{
 
   intercept(req: HttpRequest<any>, next: HttpHandler): Observable<HttpEvent<any>> {
 
-    if (req.headers.get('No-Auth') === 'True') {
-      return next.handle(req.clone());
-    } else  if (this.registrationService.getToken()) {
+    if (this.registrationService.getToken()) {
         req = this.addToken(req, this.registrationService.getToken());
     }
 
@@ -36,9 +34,6 @@ export class ErrorService implements HttpInterceptor{
         return throwError(() => (error.error.errorMessage));
       })
     );
-
-
-
 
   }
 }
