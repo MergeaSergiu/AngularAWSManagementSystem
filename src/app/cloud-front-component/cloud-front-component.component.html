@@ -1,0 +1,35 @@
+<div class="relative min-h-screen bg-white p-4">
+
+    <app-navbar></app-navbar>
+    <!-- User List -->
+    <div class="mx-auto max-w-2xl text-center mt-20">
+        <h2 class="text-balance text-4xl font-semibold tracking-tight text-gray-900 sm:text-5xl mb-10">Angular Distributions</h2>
+    </div>
+    
+    <div class="w-full flex justify-center mt-20">
+        <table class="w-1/2 border-separate border border-slate-800">
+          <thead>
+            <tr>
+              <th class="px-8 py-4 border border-slate-800 font-bold text-center">Identifier</th>
+              <th class="px-8 py-4 border border-slate-800 font-bold text-center">App Name</th>
+              <th class="px-8 py-4 border border-slate-800 font-bold text-center">Domain Name</th>
+              <th class="px-8 py-4 border border-slate-800 font-bold text-center">App Status</th>
+              <th class="px-8 py-4 border border-slate-800 font-bold text-center">Enabled</th>
+              <th class="px-8 py-4 border border-slate-800 font-bold text-center">Actions</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr *ngFor="let distribution of cloudFrontDistributions">
+              <td class="px-8 py-4 border border-slate-800 text-center">{{ distribution.identifier }}</td>
+              <td class="px-8 py-4 border border-slate-800 text-center">{{ distribution.distributionName }}</td>
+              <td class="px-8 py-4 border border-slate-800 text-center">{{ distribution.domainName }}</td>
+              <td class="px-8 py-4 border border-slate-800 text-center">{{ distribution.status }}</td>
+              <td class="px-8 py-4 border border-slate-800 text-center">{{distribution.enabled}}</td>
+              <td class="px-8 py-4 border border-slate-800 text-center">
+                <button class=" bg-red-500 text-white font-semibold py-2 px-4 rounded hover:bg-red-600 transition duration-200">Delete bucket</button>
+              </td>
+            </tr>
+          </tbody>
+        </table>
+    </div>
+</div>

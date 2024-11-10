@@ -10,6 +10,8 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { HTTP_INTERCEPTORS, HttpClientModule } from '@angular/common/http';
 import { UserDashboardComponent } from './user-dashboard/user-dashboard.component';
 import { ErrorService } from './interceptor/error.service';
+import { NavbarComponent } from './navbar/navbar.component';
+import { CloudFrontComponentComponent } from './cloud-front-component/cloud-front-component.component';
 
 @NgModule({
   declarations: [
@@ -17,7 +19,9 @@ import { ErrorService } from './interceptor/error.service';
     HomePageComponent,
     LoginComponent,
     SignupComponent,
-    UserDashboardComponent
+    UserDashboardComponent,
+    CloudFrontComponentComponent,
+    NavbarComponent
   ],
   imports: [
     BrowserModule,
@@ -27,7 +31,6 @@ import { ErrorService } from './interceptor/error.service';
     FormsModule,
   ],
   providers: [
-
     { provide: HTTP_INTERCEPTORS, useClass: ErrorService , multi: true }
   ],
   bootstrap: [AppComponent]

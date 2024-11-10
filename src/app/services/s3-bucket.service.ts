@@ -19,7 +19,7 @@ export class S3BucketService{
 
     public deleteBucket(bucket: string) {
       const params = new HttpParams().set('bucketName', bucket);
-      return this.httpClient.delete<any>(`${this.API_PATH}/buckets`, { params });
+      return this.httpClient.delete<any>(this.API_PATH + "/buckets", { params });
     }
     
 
