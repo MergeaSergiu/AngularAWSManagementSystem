@@ -1,6 +1,6 @@
 import { HttpClient,  HttpHeaders } from "@angular/common/http";
 import { Injectable } from "@angular/core";
-import { catchError, Observable, throwError } from "rxjs";
+import { Observable } from "rxjs";
 import { RegistrationRequest } from "../models/registration-data.model";
 import { LoginRequest } from "../models/login-data.model";
 import { Router } from "@angular/router";
@@ -37,6 +37,10 @@ export class RegistrationService{
 
    public getUserRole(): string | null {
     return localStorage.getItem('role'); 
+   }
+
+   public getToken(): string | null{
+    return localStorage.getItem('access_JWT');
    }
 
    public isLogedIn(){

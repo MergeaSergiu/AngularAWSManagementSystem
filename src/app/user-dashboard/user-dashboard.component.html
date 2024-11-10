@@ -1,7 +1,33 @@
-<div class="relative">
+<div class="relative min-h-screen bg-white p-4">
+    <!-- Logout Button -->
     <button 
       (click)="logout()" 
-      class="absolute top-4 right-4 bg-red-500 text-white font-semibold py-2 px-4 rounded hover:bg-red-600 transition duration-200">
+      class="absolute top-4 right-4 bg-red-500 text-white font-semibold py-2 px-4 mr-12 rounded hover:bg-red-600 transition duration-200">
       Logout
     </button>
-  </div>
+  
+    <!-- User List -->
+    <div class="mx-auto max-w-2xl text-center mt-20">
+        <h2 class="text-balance text-4xl font-semibold tracking-tight text-gray-900 sm:text-5xl mb-10">Application Files Buckets</h2>
+    </div>
+    
+    <div class="w-full flex justify-center mt-20">
+        <table class="w-1/2 border-separate border border-slate-800">
+          <thead>
+            <tr>
+              <th class="px-8 py-4 border border-slate-800 font-bold text-center">Bucket</th>
+              <th class="px-8 py-4 border border-slate-800 font-bold text-center">Action</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr *ngFor="let bucket of bucketList">
+              <td class="px-8 py-4 border border-slate-800 text-center">{{ bucket }}</td>
+              <td class="px-8 py-4 border border-slate-800 text-center">
+                <button (click)="deleteBucket(bucket)" class=" bg-red-500 text-white font-semibold py-2 px-4 rounded hover:bg-red-600 transition duration-200">Delete bucket</button>
+              </td>
+            </tr>
+          </tbody>
+        </table>
+    </div>
+</div>
+  
