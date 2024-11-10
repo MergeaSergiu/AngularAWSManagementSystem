@@ -1,36 +1,33 @@
-<div class="relative min-h-screen bg-gray-100 p-4">
+<div class="relative min-h-screen bg-white p-4">
     <!-- Logout Button -->
     <button 
       (click)="logout()" 
-      class="absolute top-4 right-4 bg-red-500 text-white font-semibold py-2 px-4 rounded hover:bg-red-600 transition duration-200">
+      class="absolute top-4 right-4 bg-red-500 text-white font-semibold py-2 px-4 mr-12 rounded hover:bg-red-600 transition duration-200">
       Logout
     </button>
   
     <!-- User List -->
-    <ul role="list" class="divide-y divide-gray-200 max-w-4xl mx-auto mt-16">
-    <div class="mx-auto max-w-2xl text-center">
+    <div class="mx-auto max-w-2xl text-center mt-20">
         <h2 class="text-balance text-4xl font-semibold tracking-tight text-gray-900 sm:text-5xl mb-10">Application Files Buckets</h2>
     </div>
     
-    <!-- Iterate over bucketList entries -->
-    <li *ngFor="let item of bucketListEntries" class="flex justify-between gap-x-6 py-5 bg-white px-6 shadow rounded-lg">
-        <!-- Left side: Key -->
-        <div class="flex min-w-0 gap-x-4">
-            <div class="h-12 w-12 flex-none rounded-full bg-gray-50 flex items-center justify-center text-lg font-semibold text-gray-500">
-                {{ item[0] }} <!-- Optional: Display initials based on key -->
-            </div>
-        </div>
-        
-        <!-- Right side: Value -->
-        <div class="hidden shrink-0 sm:flex sm:flex-col sm:items-end">
-            <p class="text-sm text-gray-900">{{ item[1] }}</p> <!-- Property value (e.g., bucket name) -->
-        </div>
-
-        <div class="hidden shrink-0 sm:flex sm:flex-col sm:items-end">
-            <button (click)="deleteBucket(item[0])" class=" bg-red-500 text-white font-semibold py-2 px-4 rounded hover:bg-red-600 transition duration-200"> Delete bucket </button> <!-- Property value (e.g., bucket name) -->
-        </div>
-    </li>
-</ul>
-
-  </div>
+    <div class="w-full flex justify-center mt-20">
+        <table class="w-1/2 border-separate border border-slate-800">
+          <thead>
+            <tr>
+              <th class="px-8 py-4 border border-slate-800 font-bold text-center">Bucket</th>
+              <th class="px-8 py-4 border border-slate-800 font-bold text-center">Action</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr *ngFor="let bucket of bucketList">
+              <td class="px-8 py-4 border border-slate-800 text-center">{{ bucket }}</td>
+              <td class="px-8 py-4 border border-slate-800 text-center">
+                <button (click)="deleteBucket(bucket)" class=" bg-red-500 text-white font-semibold py-2 px-4 rounded hover:bg-red-600 transition duration-200">Delete bucket</button>
+              </td>
+            </tr>
+          </tbody>
+        </table>
+    </div>
+</div>
   

@@ -10,8 +10,7 @@ import { S3BucketService } from '../services/s3-bucket.service';
 export class UserDashboardComponent implements OnInit {
 
 
-  bucketList: Map<string, string> = new Map();
-  bucketListEntries: any = [];
+  bucketList: string[] = [];
 
   constructor(private registrationService: RegistrationService, private s3BucketService: S3BucketService){}
   ngOnInit(): void {
@@ -29,9 +28,8 @@ deleteBucket(bucketName: string) {
 
 getBucketList(){
     this.s3BucketService.getBucketList().subscribe({
-      next: (response: Map<string, string>) => {
-        this.bucketList = new Map<string, string>(Object.entries(response)); // Convert object to Map
-          this.bucketListEntries =  Array.from(this.bucketList.entries());
+      next: (response: string[]) => {
+        this.bucketList = response; 
       }, 
       error : (error) => {} 
     })

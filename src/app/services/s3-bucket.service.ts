@@ -13,8 +13,8 @@ export class S3BucketService{
 
     API_PATH = "http://localhost:8080/api/aws/s3";
 
-    public getBucketList(): Observable<Map<string, string>> {
-        return this.httpClient.get<Map<string,string>>(this.API_PATH + "/buckets");
+    public getBucketList(): Observable<string[]> {
+        return this.httpClient.get<string[]>(this.API_PATH + "/buckets");
     }
 
     public deleteBucket(bucket: string) {
