@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { ChangeDetectorRef, Component, OnInit } from '@angular/core';
 import { RegistrationService } from '../services/registration.service';
 import { S3BucketService } from '../services/s3-bucket.service';
 
@@ -11,8 +11,9 @@ export class UserDashboardComponent implements OnInit {
 
 
   bucketList: string[] = [];
+  message: string = '';
 
-  constructor(private registrationService: RegistrationService, private s3BucketService: S3BucketService){}
+  constructor(private cdr: ChangeDetectorRef, private s3BucketService: S3BucketService){}
   ngOnInit(): void {
   this.getBucketList();
 }
@@ -20,13 +21,24 @@ export class UserDashboardComponent implements OnInit {
 deleteBucket(bucketName: string) {
   this.s3BucketService.deleteBucket(bucketName).subscribe({
         next: () =>{
+          this.message = "The bucket is deleting. It may take a few moments";
+          setTimeout(() => {
+            this.message = '';
+            this.cdr.detectChanges();
+        }, 3000);
         this.getBucketList();
     }, 
-    error: () => {}
+    error: (error) => {
+      this.message = error;
+      setTimeout(() => {
+        this.message = '';
+        this.cdr.detectChanges();
+    }, 3000);
+    }
   })
 }
 
-getBucketList(){
+  getBucketList(){
     this.s3BucketService.getBucketList().subscribe({
       next: (response: string[]) => {
         this.bucketList = response; 
@@ -37,9 +49,7 @@ getBucketList(){
 
   
 
-  logout() {
-    this.registrationService.logedOut();
-    }
+
 
     
 

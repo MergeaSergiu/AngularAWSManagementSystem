@@ -22,7 +22,12 @@ export class CloudFrontService{
 
     public deleteDistribution(distributionIdentifier: string){
         const params = new HttpParams().set('distributionIdentifier', distributionIdentifier);
-        return this.httpClient.delete(this.API_PATH + "/distributions", {params} );
+        return this.httpClient.delete(this.API_PATH + "/distributions", {params});
+    }
+
+    public updateDistributionStatus(distributionIdentifier: string, command: boolean): Observable<string>{
+        const params = new HttpParams().set('distributionIdentifier', distributionIdentifier).set('command', command);
+        return this.httpClient.post<string>(this.API_PATH + "/distributions", null, {params});
     }
 
 
