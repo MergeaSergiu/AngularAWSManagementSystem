@@ -12,6 +12,7 @@ import { UserDashboardComponent } from './user-dashboard/user-dashboard.componen
 import { ErrorService } from './interceptor/error.service';
 import { NavbarComponent } from './navbar/navbar.component';
 import { CloudFrontComponentComponent } from './cloud-front-component/cloud-front-component.component';
+import { provideAnimationsAsync } from '@angular/platform-browser/animations/async';
 
 @NgModule({
   declarations: [
@@ -31,7 +32,8 @@ import { CloudFrontComponentComponent } from './cloud-front-component/cloud-fron
     FormsModule,
   ],
   providers: [
-    { provide: HTTP_INTERCEPTORS, useClass: ErrorService , multi: true }
+    { provide: HTTP_INTERCEPTORS, useClass: ErrorService , multi: true },
+    provideAnimationsAsync('noop')
   ],
   bootstrap: [AppComponent]
 })

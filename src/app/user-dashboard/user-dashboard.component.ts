@@ -9,7 +9,6 @@ import { S3BucketService } from '../services/s3-bucket.service';
 })
 export class UserDashboardComponent implements OnInit {
 
-
   bucketList: string[] = [];
   message: string = '';
 
@@ -43,14 +42,21 @@ deleteBucket(bucketName: string) {
       next: (response: string[]) => {
         this.bucketList = response; 
       }, 
-      error : (error) => {} 
+      error : () => {} 
     })
   }
 
-  
-
-
-
-    
-
+  createBucket(bucketName: string) {
+    this.s3BucketService.createBucket(bucketName).subscribe({
+      next: () =>{
+        this.getBucketList();
+        }, error: (error) =>{
+        this.message = error;
+        setTimeout(() => {
+          this.message = '';
+          this.cdr.detectChanges();
+      }, 3000);
+      }
+    })
+  }
 }
