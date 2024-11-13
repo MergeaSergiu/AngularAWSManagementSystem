@@ -31,15 +31,36 @@
             <tr>
               <th class="px-8 py-4 border border-slate-800 font-bold text-center">Bucket</th>
               <th class="px-8 py-4 border border-slate-800 font-bold text-center">Action</th>
+              <th class="px-8 py-4 border border-slate-800 font-bold text-center">Upload document</th>
             </tr>
           </thead>
           <tbody>
+            
             <tr *ngFor="let bucket of bucketList">
               <td class="px-8 py-4 border border-slate-800 text-center">{{ bucket }}</td>
               <td class="px-8 py-4 border border-slate-800 text-center">
                 <button (click)="deleteBucket(bucket)" class=" bg-red-500 text-white font-semibold py-2 px-4 rounded hover:bg-red-600 transition duration-200">Delete bucket</button>
               </td>
+              <td colspan="2" class="px-8 py-2 border border-slate-800 text-center">
+                <div
+                  class="border-dashed border-2 border-slate-600 p-2 text-center rounded-md"
+                  (drop)="onFileDropped($event, bucket)"
+                  (dragover)="onDragOver($event)" 
+                  (dragleave)="onDragLeave($event)"
+                  [class.bg-blue-100]="isDragging"
+                >
+                  <input type="file" #fileInput hidden (change)="onFileSelected($event, bucket)" accept=".zip" />
+                  <button
+                    (click)="fileInput.click()"
+                    class="bg-blue-500 text-white font-semibold py-2 px-4 rounded hover:bg-blue-600 transition duration-200"
+                  >
+                    Select File
+                  </button>
+                  <p class="mt-4 text-gray-600">or drag and drop your file</p>
+                </div>
+              </td>
             </tr>
+              
           </tbody>
         </table>
     </div>

@@ -10,7 +10,6 @@
         <table class="w-2/3 border-separate border border-slate-800">
           <thead>
             <tr>
-              <th class="px-8 py-4 border border-slate-800 font-bold text-center">App Name</th>
               <th class="px-8 py-4 border border-slate-800 font-bold text-center">Domain Name</th>
               <th class="px-8 py-4 border border-slate-800 font-bold text-center">App Status</th>
               <th class="px-8 py-4 border border-slate-800 font-bold text-center">Bucket</th>
@@ -21,7 +20,6 @@
           </thead>
           <tbody>
             <tr *ngFor="let distribution of cloudFrontDistributions">
-              <td class="px-8 py-4 border border-slate-800 text-center">{{ distribution.distributionName }}</td>
               <td class="px-8 py-4 border border-slate-800 text-center">{{ distribution.domainName }}</td>
               <td class="px-8 py-4 border border-slate-800 text-center">{{ distribution.status }}</td>
               <td class="px-8 py-4 border border-slate-800 text-center">{{ distribution.bucket }}</td>

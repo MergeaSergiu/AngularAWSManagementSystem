@@ -5,3 +5,7 @@
     height: 2px;
     background-color: #424345; /* Light gray */
 }
+
+.dragging {
+    background-color: #ebf4ff;
+  }
