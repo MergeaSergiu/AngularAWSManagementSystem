@@ -7,12 +7,12 @@
     </div>
     
     <div class="w-full flex justify-center mt-20">
-        <table class="w-1/2 border-separate border border-slate-800">
+        <table class="w-2/3 border-separate border border-slate-800">
           <thead>
             <tr>
-              <th class="px-8 py-4 border border-slate-800 font-bold text-center">App Name</th>
               <th class="px-8 py-4 border border-slate-800 font-bold text-center">Domain Name</th>
               <th class="px-8 py-4 border border-slate-800 font-bold text-center">App Status</th>
+              <th class="px-8 py-4 border border-slate-800 font-bold text-center">Bucket</th>
               <th class="px-8 py-4 border border-slate-800 font-bold text-center">Enabled</th>
               <th class="px-8 py-4 border border-slate-800 font-bold text-center">Actions</th>
               <th class="px-8 py-4 border border-slate-800 font-bold text-center">Enable/Disable</th>
@@ -20,9 +20,9 @@
           </thead>
           <tbody>
             <tr *ngFor="let distribution of cloudFrontDistributions">
-              <td class="px-8 py-4 border border-slate-800 text-center">{{ distribution.distributionName }}</td>
               <td class="px-8 py-4 border border-slate-800 text-center">{{ distribution.domainName }}</td>
               <td class="px-8 py-4 border border-slate-800 text-center">{{ distribution.status }}</td>
+              <td class="px-8 py-4 border border-slate-800 text-center">{{ distribution.bucket }}</td>
               <td class="px-8 py-4 border border-slate-800 text-center">{{distribution.enabled}}</td>
               <td class="px-8 py-4 border border-slate-800 text-center">
                 <button (click)="deleteDistribution(distribution.identifier)" class=" bg-red-500 text-white font-semibold py-2 px-4 rounded hover:bg-red-600 transition duration-200">Delete</button>

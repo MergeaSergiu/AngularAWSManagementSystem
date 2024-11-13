@@ -21,6 +21,12 @@ export class S3BucketService{
       const params = new HttpParams().set('bucketName', bucket);
       return this.httpClient.delete(this.API_PATH + "/buckets", { params });
     }
+
+    public createBucket(bucket: string): Observable<string>{
+      const params = new HttpParams().set('bucketName', bucket);
+      return this.httpClient.post<string>(this.API_PATH + "/buckets", null, {params});
+    }
+    
     
 
 }
