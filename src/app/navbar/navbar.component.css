@@ -1,0 +1,25 @@
+.btn {
+    background-color: transparent;
+    color: white;
+    font-size: 1rem;
+    padding: 0.75rem 1.1rem;
+    margin-right: 40px;
+    border-radius: 0.15rem;
+  }
+
+  .btn-log{
+    background-color: transparent;
+    color: white;
+    font-size: 1rem;
+    padding: 0.75rem 1.1rem;
+    margin-right: 40px;
+    border-radius: 0.15rem;
+  }
+
+  .btn:hover{
+    background-color: rgb(43, 38, 38);
+  }
+
+  .btn-log:hover{
+    background-color: rgb(171, 62, 62);
+  }
