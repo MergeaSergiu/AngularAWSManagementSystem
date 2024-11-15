@@ -6,12 +6,15 @@ h1{
     display: flex;
     justify-content: center; /* Center horizontally */
     align-items: center; /* Center vertically */
-    min-height: 100vh; /* Makes the container take up the full viewport height */
     text-align: center; /* Centers text inside the container */
 }
 
 .text-title{
-    font-size: 60px;
+    font-size: 50px;
+}
+
+.text-title2{
+    font-size: 20px;
 }
 
 .btn {
