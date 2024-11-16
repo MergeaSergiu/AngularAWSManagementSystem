@@ -1,29 +1,27 @@
-<div>
-    <div class="container">
-      <div class="flex items-center justify-center space-x-4 mb-8 mt-24">
-      <h1 class="text-title">Deploy your Angular application
-        <div class="flex justify-center mt-4 mb-8">
-          <img src="../../assets/deploy-removebg-preview.png" alt="Rocket Image" class="w-30 h-30"> <!-- Adjust width and height as needed -->
-        </div>
-      </h1>
-      <h1 class="text-title2">Use AWS to deploy your Angular applications seamlessly.
-        Enjoy fast, reliable, and scalable cloud infrastructure for your apps.
-        <div class="flex justify-center mt-4 mb-8">
-          <img src="../../assets/awsImage-removebg-preview.png" alt="Rocket Image" class="w-30 h-30"> <!-- Adjust width and height as needed -->
-        </div>
-      </h1>
+<div class="flex flex-col items-center justify-center space-y-4 mt-24">
+  <!-- Title Section -->
+  <h2 class="text-lg font-semibold text-gray-700 text-title mb-7">
+      Deploy your Angular application. Enjoy fast, reliable, and scalable cloud infrastructure for your apps.
+  </h2>
+
+  <!-- Images Section -->
+  <div class="flex items-center justify-center space-x-8 bg-gray-100 p-12 rounded-2xl w-1/2">
+      <img src="../../assets/deploy-removebg-preview.png" alt="Rocket Icon" class="w-25 h-26" />
+      <img src="../../assets/awsImage-removebg-preview.png" alt="AWS Icon" class="w-25 h-26" />
+  </div>
+
+  <!-- Buttons Section -->
+  <div class="flex flex-wrap justify-center items-center">
+    <div class="p-4">
+      <div class="flex-grow pl-6">
+        <button routerLink="/signup" class="btn">Sign Up</button>
       </div>
     </div>
-    <div class="flex flex-wrap justify-center items-center">
-      <div class="p-4">
-        <div class="flex-grow pl-6">
-          <button routerLink="/signup" class="btn">Sign Up</button>
-        </div>
-      </div>
-      <div class="p-4">
-        <div class="flex-grow pl-6">
-          <button  routerLink="/login" class="btn">Login</button>
-        </div>
+    <div class="p-4">
+      <div class="flex-grow pl-6">
+        <button  routerLink="/login" class="btn">Login</button>
       </div>
     </div>
   </div>
+</div>
+

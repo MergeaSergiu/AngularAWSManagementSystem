@@ -10,11 +10,9 @@ h1{
 }
 
 .text-title{
-    font-size: 50px;
-}
-
-.text-title2{
-    font-size: 20px;
+    font-size: 25px;
+    color: black;
+    margin-top: 4%;
 }
 
 .btn {
@@ -23,14 +21,14 @@ h1{
     font-size: 1.1rem;
     padding: 0.75rem 2rem;
     border: none;
-    border-radius: 0.25rem;
+    border-radius: 2rem;
     width: 240px;
     height: 60px;
 
   }
 
   .btn:hover {
-    background-color: darkgray; /* Change to desired hover color */
+    background-color: rgb(112, 107, 107); /* Change to desired hover color */
 }
 
 
