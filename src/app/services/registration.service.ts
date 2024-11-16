@@ -51,7 +51,7 @@ export class RegistrationService{
       localStorage.removeItem('access_JWT');
       localStorage.removeItem('refresh_JWT');
       localStorage.removeItem('role');
-      this.router.navigate(['login']);
+      this.router.navigate(['']);
    }
    
    

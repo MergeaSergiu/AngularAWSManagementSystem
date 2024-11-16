@@ -30,11 +30,10 @@ export class CloudFrontService{
         return this.httpClient.post<string>(this.API_PATH + "/distributions", null, {params});
     }
 
-    public uploadDirectory(file: File, bucketName: string, appName: string): Observable<string> {
+    public uploadDirectory(file: File, bucketName: string): Observable<string> {
         const formData = new FormData();
         formData.append('multipartFile', file);
         formData.append('bucketName', bucketName);
-        formData.append('name', appName);
         return this.httpClient.post<string>(this.API_PATH + "/distribution/uploads", formData);
     }
 

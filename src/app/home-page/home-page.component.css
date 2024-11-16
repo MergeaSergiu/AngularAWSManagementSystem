@@ -2,6 +2,7 @@ h1{
     color: white;
 }
 
+
 .container {
     display: flex;
     justify-content: center; /* Center horizontally */

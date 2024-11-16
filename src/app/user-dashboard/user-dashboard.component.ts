@@ -14,6 +14,7 @@ export class UserDashboardComponent implements OnInit {
 
   bucketList: string[] = [];
   message: string = '';
+  showToast: boolean = false;
 
   constructor(private cdr: ChangeDetectorRef, private s3BucketService: S3BucketService, private cloudFrontService: CloudFrontService){}
   ngOnInit(): void {
@@ -24,18 +25,18 @@ deleteBucket(bucketName: string) {
   this.s3BucketService.deleteBucket(bucketName).subscribe({
         next: () =>{
           this.message = "The bucket is deleting. It may take a few moments";
+          this.showToast = true;
           setTimeout(() => {
-            this.message = '';
-            this.cdr.detectChanges();
-        }, 3000);
+            this.showToast = false;  // Hide the toast after 3 seconds
+          }, 3000);
         this.getBucketList();
     }, 
     error: (error) => {
       this.message = error;
+      this.showToast = true;
       setTimeout(() => {
-        this.message = '';
-        this.cdr.detectChanges();
-    }, 3000);
+      this.showToast = false;  // Hide the toast after 3 seconds
+      }, 3000);
     }
   })
 }
@@ -52,13 +53,19 @@ deleteBucket(bucketName: string) {
   createBucket(bucketName: string) {
     this.s3BucketService.createBucket(bucketName).subscribe({
       next: () =>{
+        this.message = "The bucket was created";
+        this.showToast = true;
         this.getBucketList();
-        }, error: (error) =>{
-        this.message = error;
         setTimeout(() => {
-          this.message = '';
-          this.cdr.detectChanges();
-      }, 3000);
+          this.showToast = false;  // Hide the toast after 3 seconds
+        }, 3000);
+        }, 
+        error: (error) =>{
+        this.message = error;
+        this.showToast = true;
+        setTimeout(() => {
+        this.showToast = false;  // Hide the toast after 3 seconds
+        }, 3000);
       }
     })
   }
@@ -96,18 +103,17 @@ deleteBucket(bucketName: string) {
         return;
       }
   
-    this.cloudFrontService.uploadDirectory(file,bucketName, "testSergiuApp").subscribe({
+    this.cloudFrontService.uploadDirectory(file,bucketName).subscribe({
       next: (response) => {
         this.message = response;
+        this.showToast = true;
         setTimeout(() => {
-          this.message = '';
-          this.cdr.detectChanges();
+          this.showToast = false;
       }, 3000);
       }, error: (error) => {
         this.message = error;
         setTimeout(() => {
-          this.message = '';
-          this.cdr.detectChanges();
+          this.showToast = false;
       }, 3000);
       }
     })

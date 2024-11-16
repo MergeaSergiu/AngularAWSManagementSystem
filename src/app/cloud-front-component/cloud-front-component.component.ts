@@ -12,6 +12,7 @@ export class CloudFrontComponentComponent implements OnInit{
 
   message: string = '';
   cloudFrontDistributions: DistributionData[] = [];
+  showToast: boolean = false;
   constructor(private cloudFrontService: CloudFrontService, private cdr: ChangeDetectorRef, private registrationService: RegistrationService) {}
 
   ngOnInit(): void {
@@ -31,31 +32,39 @@ export class CloudFrontComponentComponent implements OnInit{
     this.cloudFrontService.deleteDistribution(identifier).subscribe({
       next: () => {
         this.message = "Disitribution is deleting. It will take a few minutes";
+        this.showToast = true;
         this.getDistributionList();
         setTimeout(() => {
-          this.message = '';
-          this.cdr.detectChanges();
-      }, 3000);
+          this.showToast = false;  // Hide the toast after 3 seconds
+        }, 3000);
       },
-      error: () => {}
+      error: (error) => {
+        this.message = error;
+        this.showToast = true;
+        this.getDistributionList();
+        setTimeout(() => {
+          this.showToast = false;  // Hide the toast after 3 seconds
+        }, 3000);
+      }
     })
   }
 
   toggleDistribution(identifier: string, command: boolean) {
       this.cloudFrontService.updateDistributionStatus(identifier, command).subscribe({
         next : () => {
-          this.message = "The Application is updating its status. It may take a few minutes."
-          setTimeout(() => {
-            this.message = '';
-            this.cdr.detectChanges();
-        }, 3000);
+          this.message = "The Application is updating its status. It may take a few minutes.";
+          this.showToast = true;
           this.getDistributionList();
+          setTimeout(() => {
+            this.showToast = false;  // Hide the toast after 3 seconds
+          }, 3000);
+          
         }, error: (error) => {
           this.message = error;
+          this.showToast = true;
           setTimeout(() => {
-            this.message = '';
-            this.cdr.detectChanges();
-        }, 3000);
+            this.showToast = false;  // Hide the toast after 3 seconds
+          }, 3000);
         }
       });
   }

@@ -11,7 +11,7 @@ export class NavbarComponent {
 
   constructor(private registrationService: RegistrationService, private router: Router){}
 
-  logout() {
+    logout() {
     this.registrationService.logedOut();
     }
   
@@ -22,7 +22,7 @@ export class NavbarComponent {
       this.router.navigate(['/userDashborad']);
     }
     goHome() {
-      this.router.navigate(['/'])
+      this.router.navigate([''])
     }
 
 

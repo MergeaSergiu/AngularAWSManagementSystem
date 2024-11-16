@@ -11,6 +11,7 @@ import { FormBuilder, FormGroup, NgForm } from '@angular/forms';
 export class SignupComponent implements OnInit{
 
   message: string = '';
+  showToast: boolean = false;
 
   constructor(private registrationService: RegistrationService, private cdr: ChangeDetectorRef) { }
   
@@ -25,16 +26,16 @@ export class SignupComponent implements OnInit{
       this.registrationService.singUp(register).subscribe({
         next:  (response) => {
           this.message = response.registrationResponse;
+          this.showToast = true;
           setTimeout(() => {
-            this.message = '';
-            this.cdr.detectChanges();
-        }, 3000);
+            this.showToast = false;  // Hide the toast after 3 seconds
+          }, 3000);
         },  error: (error) => {
           this.message = error;
+          this.showToast = true;
           setTimeout(() => {
-            this.message = '';
-            this.cdr.detectChanges();
-        }, 3000);
+            this.showToast = false;  // Hide the toast after 3 seconds
+          }, 3000);
         }
     });
 
