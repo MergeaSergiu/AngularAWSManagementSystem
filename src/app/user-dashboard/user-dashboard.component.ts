@@ -16,15 +16,15 @@ export class UserDashboardComponent implements OnInit {
   message: string = '';
   showToast: boolean = false;
 
-  constructor(private cdr: ChangeDetectorRef, private s3BucketService: S3BucketService, private cloudFrontService: CloudFrontService){}
+  constructor(private s3BucketService: S3BucketService, private cloudFrontService: CloudFrontService){}
   ngOnInit(): void {
   this.getBucketList();
 }
 
 deleteBucket(bucketName: string) {
   this.s3BucketService.deleteBucket(bucketName).subscribe({
-        next: () =>{
-          this.message = "The bucket is deleting. It may take a few moments";
+        next: (response) =>{
+          this.message = response;
           this.showToast = true;
           setTimeout(() => {
             this.showToast = false;  // Hide the toast after 3 seconds
@@ -52,8 +52,8 @@ deleteBucket(bucketName: string) {
 
   createBucket(bucketName: string) {
     this.s3BucketService.createBucket(bucketName).subscribe({
-      next: () =>{
-        this.message = "The bucket was created";
+      next: (response) =>{
+        this.message = response;
         this.showToast = true;
         this.getBucketList();
         setTimeout(() => {
@@ -98,8 +98,11 @@ deleteBucket(bucketName: string) {
 
      uploadApplication(file: File, bucketName: string): void {
       if (file.type !== 'application/zip' && !file.name.endsWith('.zip')) {
-        console.error('Only .zip files are allowed');
-        // Optionally, show an error message to the user
+        this.message = "Only .zip files are allowed";
+        this.showToast = true;
+        setTimeout(() => {
+          this.showToast = false;
+      }, 3000);
         return;
       }
   

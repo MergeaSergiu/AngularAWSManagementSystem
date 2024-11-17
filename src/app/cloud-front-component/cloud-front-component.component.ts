@@ -51,8 +51,8 @@ export class CloudFrontComponentComponent implements OnInit{
 
   toggleDistribution(identifier: string, command: boolean) {
       this.cloudFrontService.updateDistributionStatus(identifier, command).subscribe({
-        next : () => {
-          this.message = "The Application is updating its status. It may take a few minutes.";
+        next : (response) => {
+          this.message = response;
           this.showToast = true;
           this.getDistributionList();
           setTimeout(() => {

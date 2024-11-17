@@ -34,7 +34,7 @@ export class CloudFrontService{
         const formData = new FormData();
         formData.append('multipartFile', file);
         formData.append('bucketName', bucketName);
-        return this.httpClient.post<string>(this.API_PATH + "/distribution/uploads", formData);
+        return this.httpClient.post<string>(this.API_PATH + "/distribution/uploads", {formData, responseType: 'text', });
     }
 
 

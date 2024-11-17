@@ -17,14 +17,14 @@ export class S3BucketService{
         return this.httpClient.get<string[]>(this.API_PATH + "/buckets");
     }
 
-    public deleteBucket(bucket: string){
+    public deleteBucket(bucket: string): Observable<string>{
       const params = new HttpParams().set('bucketName', bucket);
-      return this.httpClient.delete(this.API_PATH + "/buckets", { params });
+      return this.httpClient.delete(this.API_PATH + "/buckets", { params, responseType: 'text' });
     }
 
     public createBucket(bucket: string): Observable<string>{
       const params = new HttpParams().set('bucketName', bucket);
-      return this.httpClient.post<string>(this.API_PATH + "/buckets", null, {params});
+      return this.httpClient.post(this.API_PATH + "/buckets", null, {params, responseType: 'text'});
     }
     
     

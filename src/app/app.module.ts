@@ -15,6 +15,7 @@ import { CloudFrontComponentComponent } from './cloud-front-component/cloud-fron
 import { provideAnimationsAsync } from '@angular/platform-browser/animations/async';
 import { BootMessageComponent } from './boot-message/boot-message.component';
 import {MatIconModule} from '@angular/material/icon';
+import { ScrollingModule } from '@angular/cdk/scrolling';
 
 @NgModule({
   declarations: [
@@ -25,7 +26,8 @@ import {MatIconModule} from '@angular/material/icon';
     UserDashboardComponent,
     CloudFrontComponentComponent,
     NavbarComponent,
-    BootMessageComponent
+    BootMessageComponent,
+
   ],
   imports: [
     BrowserModule,
@@ -33,7 +35,8 @@ import {MatIconModule} from '@angular/material/icon';
     ReactiveFormsModule,
     HttpClientModule,
     FormsModule,
-    MatIconModule
+    MatIconModule,
+    ScrollingModule
   ],
   providers: [
     { provide: HTTP_INTERCEPTORS, useClass: ErrorService , multi: true },

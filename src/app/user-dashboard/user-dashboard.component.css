@@ -2,3 +2,7 @@
     font-size: 28px;
     color: black;
 }
+
+.virtual-scroll-viewport {
+  overflow: auto;
+}
