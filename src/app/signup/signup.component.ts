@@ -21,7 +21,6 @@ export class SignupComponent implements OnInit{
       const register: RegistrationRequest = {
         username: form.value.email,
         password: form.value.password,
-        phoneNumber: form.value.phoneNumber
       };
       this.registrationService.singUp(register).subscribe({
         next:  (response) => {
