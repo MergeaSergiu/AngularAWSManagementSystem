@@ -47,8 +47,8 @@
             <td>
                 <button
                 type="button"
-                class="text-white font-semibold py-2 px-4 rounded"
-                [ngClass]="distribution.enabled ? 'bg-red-500' : 'bg-green-500'"
+                class="text-white font-semibold py-2 px-4 rounded transition duration-200" 
+                [ngClass]="distribution.enabled ? 'bg-red-500 hover:bg-red-700' : 'bg-green-500 hover:bg-green-700'"
                 (click)="toggleDistribution(distribution.identifier, !distribution.enabled)"
                 data-mdb-ripple-color="dark"
                 >

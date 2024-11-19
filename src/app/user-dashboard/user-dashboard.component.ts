@@ -105,7 +105,11 @@ deleteBucket(bucketName: string) {
       }, 3000);
         return;
       }
-  
+    this.message = "The process will take several minutes.";
+    this.showToast = true;
+        setTimeout(() => {
+          this.showToast = false;
+      }, 4000);
     this.cloudFrontService.uploadDirectory(file,bucketName).subscribe({
       next: (response) => {
         this.message = response;

@@ -5,4 +5,4 @@
 @tailwind utilities;
 
 html, body { height: 100%; }
-body { margin: 0; font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif, "Helvetica Neue", sans-serif; background-color: #ffffff;}
+body { margin: 0; font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif, "Helvetica Neue", sans-serif;}

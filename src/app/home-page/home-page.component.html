@@ -1,28 +1,60 @@
-<div class="flex flex-col items-center justify-center space-y-4 mt-24 bg-c">
+<div class="flex flex-col items-center justify-center min-h-screen bg-gray-50 space-y-8">
   <!-- Title Section -->
-  <h2 class="text-lg font-semibold text-gray-700 text-title mb-7">
-      Deploy your Angular application. Enjoy fast, reliable, and scalable cloud infrastructure for your apps.
+  <h2 class="text-4xl font-extrabold text-gray-800 text-center">
+    Deploy your Angular Application Instantly.
   </h2>
+  <p class="text-lg text-gray-600 text-center">
+    Fast, reliable, and scalable cloud infrastructure for your apps.
+  </p>
 
-  <!-- Images Section -->
-  <div class="flex items-center justify-center space-x-8 bg-white p-12 rounded-2xl w-2/3">
-      <img src="../../assets/deploy-removebg-preview.png" alt="Rocket Icon" class="w-25 h-26" />
-      <img src="../../assets/awsImage-removebg-preview.png" alt="AWS Icon" class="w-25 h-26" />
-      <p>Our application provides a seamless way for users to manage their cloud storage by creating and managing buckets. Users can upload files in ZIP format to their personalized buckets and organize their data with ease. Each bucket can be individually deleted, offering full control over the user’s cloud storage environment. The app offers a clean and intuitive interface with features like drag-and-drop file uploads and real-time actions, allowing users to quickly manage their cloud resources.</p>
-  </div>
+<!-- Images Section -->
+<div class="flex items-center justify-center space-x-8">
+  <img src="../../assets/deploy-removebg-preview.png" alt="Rocket Icon" class="w-24 h-24" />
+  <img src="../../assets/awsImage-removebg-preview.png" alt="AWS Icon" class="w-24 h-24" />
+</div>
+
 
   <!-- Buttons Section -->
-  <div class="flex flex-wrap justify-center items-center">
-    <div class="p-4">
-      <div class="flex-grow pl-6">
-        <button routerLink="/signup" class="btn">Sign Up</button>
-      </div>
-    </div>
-    <div class="p-4">
-      <div class="flex-grow pl-6">
-        <button  routerLink="/login" class="btn">Login</button>
+  <div class="flex space-x-4">
+    <button routerLink="/signup" class="px-9 py-2 bg-green-600 text-white font-semibold rounded-lg hover:bg-green-700">
+      Sign Up
+    </button>
+    <button routerLink="/login" class="px-9 py-2 bg-gray-600 text-white font-semibold rounded-lg hover:bg-gray-700">
+      Login
+    </button>
+  </div>
+
+  <div class="bg-gray-900 text-white py-12">
+    <div class="container mx-auto px-4 text-center">
+      <h3 class="text-3xl font-bold mb-8">How Does It Work?</h3>
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+        <!-- Step 1 -->
+        <div class="flex flex-col items-center">
+          <div class="text-5xl mb-4">🔍</div>
+          <h4 class="text-xl font-semibold mb-2">1. Upload Your Project</h4>
+          <p class="text-gray-300">
+            Create a bucket, then simply drag and drop your Angular project in .zip format or select it using the upload button.
+          </p>
+        </div>
+        <!-- Step 2 -->
+        <div class="flex flex-col items-center">
+          <div class="text-5xl mb-4">☁️</div>
+          <h4 class="text-xl font-semibold mb-2">2. Build & Deploy</h4>
+          <p class="text-gray-300">
+            The application builds your project using AWS services and deploys it to the cloud in a few minutes.
+          </p>
+        </div>
+        <!-- Step 3 -->
+        <div class="flex flex-col items-center">
+          <div class="text-5xl mb-4">🚀</div>
+          <h4 class="text-xl font-semibold mb-2">3. Access & Share</h4>
+          <p class="text-gray-300">
+            Get a shareable link to your deployed app and access it from anywhere in the world.
+          </p>
+        </div>
       </div>
     </div>
   </div>
 </div>
+
 

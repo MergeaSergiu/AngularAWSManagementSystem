@@ -29,14 +29,16 @@ export class CloudFrontComponentComponent implements OnInit{
   }
 
   deleteDistribution(identifier: string) {
+
+    this.message = "Disitribution is deleting. It will take a few minutes";
+    this.showToast = true;
+    setTimeout(() => {
+      this.showToast = false;  // Hide the toast after 3 seconds
+    }, 3000);
+
     this.cloudFrontService.deleteDistribution(identifier).subscribe({
-      next: () => {
-        this.message = "Disitribution is deleting. It will take a few minutes";
-        this.showToast = true;
+      next: (response) => {
         this.getDistributionList();
-        setTimeout(() => {
-          this.showToast = false;  // Hide the toast after 3 seconds
-        }, 3000);
       },
       error: (error) => {
         this.message = error;

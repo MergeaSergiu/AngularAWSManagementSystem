@@ -24,7 +24,7 @@ export class S3BucketService{
 
     public createBucket(bucket: string): Observable<string>{
       const params = new HttpParams().set('bucketName', bucket);
-      return this.httpClient.post(this.API_PATH + "/buckets", null, {params, responseType: 'text'});
+      return this.httpClient.post(this.API_PATH + "/buckets", null, {params, responseType: 'text' });
     }
     
     
