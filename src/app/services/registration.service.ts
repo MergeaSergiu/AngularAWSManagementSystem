@@ -1,14 +1,16 @@
-import { HttpClient,  HttpHeaders } from "@angular/common/http";
+import { HttpClient,  HttpHeaders, HttpParams } from "@angular/common/http";
 import { Injectable } from "@angular/core";
 import { Observable } from "rxjs";
 import { RegistrationRequest } from "../models/registration-data.model";
 import { LoginRequest } from "../models/login-data.model";
 import { Router } from "@angular/router";
+import { JwtRefreshToken } from "../models/jwt-refresh-data.model";
 
 @Injectable({
     providedIn: 'root'
   })
 export class RegistrationService{
+
 
   API_PATH = "http://localhost:8080/api/aws/auth";
   requestHeader = new HttpHeaders({ 'No-Auth': 'True' });
@@ -22,6 +24,10 @@ export class RegistrationService{
    public logIn(loginRequest: LoginRequest): Observable<any> {
     return this.httpClient.post(this.API_PATH + "/login", loginRequest, {headers: this.requestHeader});
    }
+
+   public refresh_Token(refreshToken: JwtRefreshToken): Observable<any>{
+      return this.httpClient.post(this.API_PATH + "/refresh", refreshToken, {headers: this.requestHeader} );
+    }
 
    public setToken(token: string) {
     localStorage.setItem('access_JWT', token);
@@ -38,6 +44,10 @@ export class RegistrationService{
    public getUserRole(): string | null {
     return localStorage.getItem('role'); 
    }
+
+   public getRefreshToken() {
+      return localStorage.getItem('refresh_JWT')!;
+     }
 
    public getToken(): string | null{
     return localStorage.getItem('access_JWT');
