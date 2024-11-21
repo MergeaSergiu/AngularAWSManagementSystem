@@ -1,0 +1,36 @@
+.btn {
+    background-color: transparent;
+    color: white;
+    font-size: 1rem;
+    padding: 0.75rem 1.1rem;
+    border-radius: 2rem;
+    margin-right: 40px;
+  }
+
+  .color{
+    background-color: #04a0cb;
+  }
+
+  .btn-log{
+    background-color: transparent;
+    color: white;
+    font-size: 1rem;
+    padding: 0.75rem 1.1rem;
+    border-radius: 2rem;
+    display: inline-flex; /* Aligns items horizontally */
+    align-items: center; /* Centers items vertically */
+    gap: 6px; /* Adds space between text and icon */
+    font-size: 16px; /* Ensures consistent font size */
+  }
+
+  .btn-log mat-icon {
+    font-size: 20px; /* Adjust icon size if needed */
+  }
+
+  .btn:hover{
+    background-color: rgb(43, 38, 38);
+  }
+
+  .btn-log:hover{
+    background-color: rgb(207, 40, 40);
+  }

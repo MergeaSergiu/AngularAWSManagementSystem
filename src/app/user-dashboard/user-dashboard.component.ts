@@ -14,28 +14,29 @@ export class UserDashboardComponent implements OnInit {
 
   bucketList: string[] = [];
   message: string = '';
+  showToast: boolean = false;
 
-  constructor(private cdr: ChangeDetectorRef, private s3BucketService: S3BucketService, private cloudFrontService: CloudFrontService){}
+  constructor(private s3BucketService: S3BucketService, private cloudFrontService: CloudFrontService){}
   ngOnInit(): void {
   this.getBucketList();
 }
 
 deleteBucket(bucketName: string) {
   this.s3BucketService.deleteBucket(bucketName).subscribe({
-        next: () =>{
-          this.message = "The bucket is deleting. It may take a few moments";
+        next: (response) =>{
+          this.message = response;
+          this.showToast = true;
           setTimeout(() => {
-            this.message = '';
-            this.cdr.detectChanges();
-        }, 3000);
+            this.showToast = false;  // Hide the toast after 3 seconds
+          }, 3000);
         this.getBucketList();
     }, 
     error: (error) => {
       this.message = error;
+      this.showToast = true;
       setTimeout(() => {
-        this.message = '';
-        this.cdr.detectChanges();
-    }, 3000);
+      this.showToast = false;  // Hide the toast after 3 seconds
+      }, 3000);
     }
   })
 }
@@ -51,14 +52,20 @@ deleteBucket(bucketName: string) {
 
   createBucket(bucketName: string) {
     this.s3BucketService.createBucket(bucketName).subscribe({
-      next: () =>{
+      next: (response) =>{
+        this.message = response;
+        this.showToast = true;
         this.getBucketList();
-        }, error: (error) =>{
-        this.message = error;
         setTimeout(() => {
-          this.message = '';
-          this.cdr.detectChanges();
-      }, 3000);
+          this.showToast = false;  // Hide the toast after 3 seconds
+        }, 3000);
+        }, 
+        error: (error) =>{
+        this.message = error;
+        this.showToast = true;
+        setTimeout(() => {
+        this.showToast = false;  // Hide the toast after 3 seconds
+        }, 3000);
       }
     })
   }
@@ -91,23 +98,29 @@ deleteBucket(bucketName: string) {
 
      uploadApplication(file: File, bucketName: string): void {
       if (file.type !== 'application/zip' && !file.name.endsWith('.zip')) {
-        console.error('Only .zip files are allowed');
-        // Optionally, show an error message to the user
+        this.message = "Only .zip files are allowed";
+        this.showToast = true;
+        setTimeout(() => {
+          this.showToast = false;
+      }, 3000);
         return;
       }
-  
-    this.cloudFrontService.uploadDirectory(file,bucketName, "testSergiuApp").subscribe({
+    this.message = "The process will take several minutes.";
+    this.showToast = true;
+        setTimeout(() => {
+          this.showToast = false;
+      }, 4000);
+    this.cloudFrontService.uploadDirectory(file,bucketName).subscribe({
       next: (response) => {
         this.message = response;
+        this.showToast = true;
         setTimeout(() => {
-          this.message = '';
-          this.cdr.detectChanges();
+          this.showToast = false;
       }, 3000);
       }, error: (error) => {
         this.message = error;
         setTimeout(() => {
-          this.message = '';
-          this.cdr.detectChanges();
+          this.showToast = false;
       }, 3000);
       }
     })

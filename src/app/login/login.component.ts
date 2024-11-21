@@ -13,6 +13,7 @@ import { Router } from '@angular/router';
 export class LoginComponent {
 
   message: string = '';
+  showToast: boolean = false;
 
   constructor(private registrationService: RegistrationService, private cdr: ChangeDetectorRef, private router: Router) { }
   
@@ -31,14 +32,16 @@ export class LoginComponent {
           this.router.navigate(['userDashborad']);
         },  error: (error) => {
           this.message = error;
+          this.showToast = true;
           setTimeout(() => {
-            this.message = '';
-            this.cdr.detectChanges();
-        }, 3000);
+            this.showToast = false;  // Hide the toast after 3 seconds
+          }, 3000);
+            // Show the toast message
       }
     });
 
     form.reset();
   }
+
 
 }

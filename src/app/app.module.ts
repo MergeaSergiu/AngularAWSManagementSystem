@@ -13,6 +13,9 @@ import { ErrorService } from './interceptor/error.service';
 import { NavbarComponent } from './navbar/navbar.component';
 import { CloudFrontComponentComponent } from './cloud-front-component/cloud-front-component.component';
 import { provideAnimationsAsync } from '@angular/platform-browser/animations/async';
+import { BootMessageComponent } from './boot-message/boot-message.component';
+import {MatIconModule} from '@angular/material/icon';
+import { ScrollingModule } from '@angular/cdk/scrolling';
 
 @NgModule({
   declarations: [
@@ -22,7 +25,9 @@ import { provideAnimationsAsync } from '@angular/platform-browser/animations/asy
     SignupComponent,
     UserDashboardComponent,
     CloudFrontComponentComponent,
-    NavbarComponent
+    NavbarComponent,
+    BootMessageComponent,
+
   ],
   imports: [
     BrowserModule,
@@ -30,6 +35,8 @@ import { provideAnimationsAsync } from '@angular/platform-browser/animations/asy
     ReactiveFormsModule,
     HttpClientModule,
     FormsModule,
+    MatIconModule,
+    ScrollingModule
   ],
   providers: [
     { provide: HTTP_INTERCEPTORS, useClass: ErrorService , multi: true },

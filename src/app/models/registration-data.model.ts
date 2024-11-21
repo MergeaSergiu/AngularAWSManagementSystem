@@ -1,5 +1,4 @@
 export interface RegistrationRequest{
     username: string,
-    password: string,
-    phoneNumber: string
+    password: string
 }

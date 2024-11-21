@@ -2,14 +2,13 @@ import { HttpEvent, HttpHandler, HttpInterceptor, HttpRequest } from '@angular/c
 import { Injectable } from '@angular/core';
 import { catchError, Observable, throwError } from 'rxjs';
 import { RegistrationService } from '../services/registration.service';
-import { Router } from '@angular/router';
 
 @Injectable({
   providedIn: 'root'
 })
 export class ErrorService implements HttpInterceptor{
 
-  constructor(private registrationService: RegistrationService, private router: Router) { }
+  constructor(private registrationService: RegistrationService) { }
 
   private addToken(request: HttpRequest<any>, access_token: string | null ) {
     return request.clone(
@@ -20,7 +19,6 @@ export class ErrorService implements HttpInterceptor{
         }
     );
 }
-
 
   intercept(req: HttpRequest<any>, next: HttpHandler): Observable<HttpEvent<any>> {
 

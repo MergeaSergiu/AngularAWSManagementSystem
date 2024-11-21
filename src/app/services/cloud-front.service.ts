@@ -27,15 +27,14 @@ export class CloudFrontService{
 
     public updateDistributionStatus(distributionIdentifier: string, command: boolean): Observable<string>{
         const params = new HttpParams().set('distributionIdentifier', distributionIdentifier).set('command', command);
-        return this.httpClient.post<string>(this.API_PATH + "/distributions", null, {params});
+        return this.httpClient.post<string>(this.API_PATH + "/distributions", null, {params, responseType: 'text' as 'json'});
     }
 
-    public uploadDirectory(file: File, bucketName: string, appName: string): Observable<string> {
+    public uploadDirectory(file: File, bucketName: string): Observable<string> {
         const formData = new FormData();
         formData.append('multipartFile', file);
         formData.append('bucketName', bucketName);
-        formData.append('name', appName);
-        return this.httpClient.post<string>(this.API_PATH + "/distribution/uploads", formData);
+        return this.httpClient.post<string>(this.API_PATH + "/distribution/uploads", formData );
     }
 
 

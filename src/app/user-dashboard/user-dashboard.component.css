@@ -1,11 +1,8 @@
-.divider {
-    margin: 30px auto;
-    margin-top: 5%;
-    width: 80%;  /* Adjust width as needed */
-    height: 2px;
-    background-color: #424345; /* Light gray */
+.text-title{
+    font-size: 28px;
+    color: black;
 }
 
-.dragging {
-    background-color: #ebf4ff;
-  }
+.virtual-scroll-viewport {
+  overflow: auto;
+}
