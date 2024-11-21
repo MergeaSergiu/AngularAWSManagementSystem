@@ -1,31 +1,27 @@
-
 .container {
-    display: flex;
-    justify-content: center; /* Center horizontally */
-    align-items: center; /* Center vertically */
-    text-align: center; /* Centers text inside the container */
+  display: flex;
+  justify-content: center; /* Center horizontally */
+  align-items: center; /* Center vertically */
+  text-align: center; /* Centers text inside the container */
 }
 
-.text-title{
-    font-size: 25px;
-    color: black;
-    margin-top: 4%;
+.text-title {
+  font-size: 25px;
+  color: black;
+  margin-top: 4%;
 }
 
 .btn {
-    background-color: black;
-    color: white;
-    font-size: 1.1rem;
-    padding: 0.75rem 2rem;
-    border: none;
-    border-radius: 2rem;
-    width: 240px;
-    height: 60px;
-
-  }
-
-  .btn:hover {
-    background-color: rgb(112, 107, 107); /* Change to desired hover color */
+  background-color: black;
+  color: white;
+  font-size: 1.1rem;
+  padding: 0.75rem 2rem;
+  border: none;
+  border-radius: 2rem;
+  width: 240px;
+  height: 60px;
 }
 
-
+.btn:hover {
+  background-color: rgb(112, 107, 107); /* Change to desired hover color */
+}

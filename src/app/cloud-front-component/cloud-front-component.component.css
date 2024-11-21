@@ -1,0 +1,26 @@
+.table-auto {
+  width: 80%;
+  border-collapse: collapse;
+}
+
+.table-auto th,
+.table-auto td {
+  text-align: left;
+  vertical-align: middle;
+}
+
+.table-auto th {
+  font-weight: 600;
+  color: #4b5563; /* Gray-600 */
+}
+
+.table-auto td {
+  font-size: 0.875rem; /* Text-sm */
+  padding: 0.75rem; /* Spacing */
+  color: #1f2937; /* Gray-800 */
+}
+
+.table-auto tbody tr:hover {
+  background-color: #f9fafb; /* Light Gray */
+  border: 0.5px solid #3b82f6;
+}

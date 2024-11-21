@@ -16,55 +16,55 @@ export class UserDashboardComponent implements OnInit {
   message: string = '';
   showToast: boolean = false;
 
-  constructor(private s3BucketService: S3BucketService, private cloudFrontService: CloudFrontService){}
+  constructor(private s3BucketService: S3BucketService, private cloudFrontService: CloudFrontService) { }
   ngOnInit(): void {
-  this.getBucketList();
-}
+    this.getBucketList();
+  }
 
-deleteBucket(bucketName: string) {
-  this.s3BucketService.deleteBucket(bucketName).subscribe({
-        next: (response) =>{
-          this.message = response;
-          this.showToast = true;
-          setTimeout(() => {
-            this.showToast = false;  // Hide the toast after 3 seconds
-          }, 3000);
+  deleteBucket(bucketName: string) {
+    this.s3BucketService.deleteBucket(bucketName).subscribe({
+      next: (response) => {
+        this.message = response;
+        this.showToast = true;
+        setTimeout(() => {
+          this.showToast = false;  // Hide the toast after 3 seconds
+        }, 3000);
         this.getBucketList();
-    }, 
-    error: (error) => {
-      this.message = error;
-      this.showToast = true;
-      setTimeout(() => {
-      this.showToast = false;  // Hide the toast after 3 seconds
-      }, 3000);
-    }
-  })
-}
+      },
+      error: (error) => {
+        this.message = error;
+        this.showToast = true;
+        setTimeout(() => {
+          this.showToast = false;  // Hide the toast after 3 seconds
+        }, 3000);
+      }
+    })
+  }
 
-  getBucketList(){
+  getBucketList() {
     this.s3BucketService.getBucketList().subscribe({
       next: (response: string[]) => {
-        this.bucketList = response; 
-      }, 
-      error : () => {} 
+        this.bucketList = response;
+      },
+      error: () => { }
     })
   }
 
   createBucket(bucketName: string) {
     this.s3BucketService.createBucket(bucketName).subscribe({
-      next: (response) =>{
+      next: (response) => {
         this.message = response;
         this.showToast = true;
         this.getBucketList();
         setTimeout(() => {
           this.showToast = false;  // Hide the toast after 3 seconds
         }, 3000);
-        }, 
-        error: (error) =>{
+      },
+      error: (error) => {
         this.message = error;
         this.showToast = true;
         setTimeout(() => {
-        this.showToast = false;  // Hide the toast after 3 seconds
+          this.showToast = false;  // Hide the toast after 3 seconds
         }, 3000);
       }
     })
@@ -78,52 +78,52 @@ deleteBucket(bucketName: string) {
     }
   }
 
-    onDragLeave(event: DragEvent): void {
-      this.isDragging = false;
-    }
+  onDragLeave(event: DragEvent): void {
+    this.isDragging = false;
+  }
 
-    onDragOver(event: DragEvent) {
-      event.preventDefault();
-      this.isDragging = true;
-    }
+  onDragOver(event: DragEvent) {
+    event.preventDefault();
+    this.isDragging = true;
+  }
 
-    onFileDropped(event: DragEvent, bucketName: string) {
-      event.preventDefault();
+  onFileDropped(event: DragEvent, bucketName: string) {
+    event.preventDefault();
     this.isDragging = false;
     if (event.dataTransfer && event.dataTransfer.files.length > 0) {
       const file = event.dataTransfer.files[0];
       this.uploadApplication(file, bucketName);
     }
-    }
+  }
 
-     uploadApplication(file: File, bucketName: string): void {
-      if (file.type !== 'application/zip' && !file.name.endsWith('.zip')) {
-        this.message = "Only .zip files are allowed";
-        this.showToast = true;
-        setTimeout(() => {
-          this.showToast = false;
+  uploadApplication(file: File, bucketName: string): void {
+    if (file.type !== 'application/zip' && !file.name.endsWith('.zip')) {
+      this.message = "Only .zip files are allowed";
+      this.showToast = true;
+      setTimeout(() => {
+        this.showToast = false;
       }, 3000);
-        return;
-      }
+      return;
+    }
     this.message = "The process will take several minutes.";
     this.showToast = true;
-        setTimeout(() => {
-          this.showToast = false;
-      }, 4000);
-    this.cloudFrontService.uploadDirectory(file,bucketName).subscribe({
+    setTimeout(() => {
+      this.showToast = false;
+    }, 4000);
+    this.cloudFrontService.uploadDirectory(file, bucketName).subscribe({
       next: (response) => {
         this.message = response;
         this.showToast = true;
         setTimeout(() => {
           this.showToast = false;
-      }, 3000);
+        }, 3000);
       }, error: (error) => {
         this.message = error;
         setTimeout(() => {
           this.showToast = false;
-      }, 3000);
+        }, 3000);
       }
     })
 
-    }
+  }
 }

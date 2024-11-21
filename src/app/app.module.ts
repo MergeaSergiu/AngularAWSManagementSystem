@@ -14,7 +14,7 @@ import { NavbarComponent } from './navbar/navbar.component';
 import { CloudFrontComponentComponent } from './cloud-front-component/cloud-front-component.component';
 import { provideAnimationsAsync } from '@angular/platform-browser/animations/async';
 import { BootMessageComponent } from './boot-message/boot-message.component';
-import {MatIconModule} from '@angular/material/icon';
+import { MatIconModule } from '@angular/material/icon';
 import { ScrollingModule } from '@angular/cdk/scrolling';
 
 @NgModule({
@@ -39,7 +39,7 @@ import { ScrollingModule } from '@angular/cdk/scrolling';
     ScrollingModule
   ],
   providers: [
-    { provide: HTTP_INTERCEPTORS, useClass: ErrorService , multi: true },
+    { provide: HTTP_INTERCEPTORS, useClass: ErrorService, multi: true },
     provideAnimationsAsync('noop')
   ],
   bootstrap: [AppComponent]

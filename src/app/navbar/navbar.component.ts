@@ -9,22 +9,22 @@ import { Router } from '@angular/router';
 })
 export class NavbarComponent {
 
-  constructor(private registrationService: RegistrationService, private router: Router){}
+  constructor(private registrationService: RegistrationService, private router: Router) { }
 
-    logout() {
+  logout() {
     this.registrationService.logedOut();
-    }
-  
-    goToAppsDeployment() {
-      this.router.navigate(['/distributions']);
-    }
-    goToBucketsDashboard() {
-      this.router.navigate(['/userDashborad']);
-    }
-    goHome() {
-      this.router.navigate([''])
-    }
+  }
+
+  goToAppsDeployment() {
+    this.router.navigate(['/distributions']);
+  }
+  goToBucketsDashboard() {
+    this.router.navigate(['/userDashborad']);
+  }
+  goHome() {
+    this.router.navigate([''])
+  }
 
 
-    
+
 }

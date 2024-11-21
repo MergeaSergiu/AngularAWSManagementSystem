@@ -1,68 +1,90 @@
 <div class="relative min-h-screen">
+  <app-navbar></app-navbar>
 
-    <app-navbar></app-navbar>
-    <!-- User List -->
-    <div class="mx-auto max-w-1xl text-center mt-40">
-      <h2 class="text-balance text-3xl font-semibold tracking-tight text-white sm:text-5xl mb-10">Your Applications</h2>
-    </div>
+  <!-- Header -->
+  <div class="mx-auto max-w-1xl text-center mt-40">
+    <h2 class="text-3xl font-semibold text-gray-700 sm:text-4xl mb-10">
+      Your Applications
+    </h2>
+  </div>
 
-
-    <div class="w-full flex justify-center mt-20">
-      <table class="table align-middle mb-0 bg-white w-3/4">
-        <thead class="bg-light">
-          <tr>
-            <th>Domain Name</th>
-            <th>App Status</th>
-            <th>Bucket</th>
-            <th>Enabled</th>
-            <th>Actions</th>
-            <th>Enable/Disable</th>
-          </tr>
-        </thead>
-        <tbody>
-          <tr *ngFor="let distribution of cloudFrontDistributions">
-            <td>
-              <div>
-                {{ distribution.domainName }}
-              </div>
-            </td>
-            <td>
-              <div>
-                {{ distribution.status }}
-              </div>
-            </td>
-            <td>
-              <div>
-                {{ distribution.bucket }}
-              </div>
-            </td>
-            <td>
-              <div>
-                {{distribution.enabled}}
-              </div>
-            </td>
-            <td>
-              <button (click)="deleteDistribution(distribution.identifier)" class="bg-red-500 text-white font-semibold py-2 px-4 rounded hover:bg-red-600 transition duration-200">Delete</button>
-            </td>
-            <td>
-                <button
-                type="button"
-                class="text-white font-semibold py-2 px-4 rounded transition duration-200" 
-                [ngClass]="distribution.enabled ? 'bg-red-500 hover:bg-red-700' : 'bg-green-500 hover:bg-green-700'"
-                (click)="toggleDistribution(distribution.identifier, !distribution.enabled)"
-                data-mdb-ripple-color="dark"
-                >
-                  {{ distribution.enabled ? 'Disable' : 'Enable' }}
-                </button>
-
-            </td>
-          </tr>
-        </tbody>
-      </table>
+  <!-- Table -->
+  <div class="w-full flex justify-center mt-24 overflow-x-auto">
+    <table
+      class="table-auto border border-gray-200 shadow-sm rounded-lg w-4/5 text-left bg-white"
+    >
+      <thead class="bg-gray-100">
+        <tr class="text-gray-600 font-semibold text-sm uppercase tracking-wide">
+          <th class="p-4">Domain Name</th>
+          <th class="p-4">App Status</th>
+          <th class="p-4">Bucket</th>
+          <th class="p-4">Enabled</th>
+          <th class="p-4">Actions</th>
+          <th class="p-4">Enable/Disable</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr
+          *ngFor="let distribution of cloudFrontDistributions"
+          class="text-sm text-gray-800 border-b transition duration-150"
+        >
+          <td class="p-4">{{ distribution.domainName }}</td>
+          <td class="p-4">
+            <span
+              class="px-2 py-1 rounded text-xs font-semibold"
+              [ngClass]="{
+                'bg-green-100 text-green-700': distribution.status === 'Deployed',
+                'bg-yellow-100 text-yellow-700': distribution.status === 'InProgress',
+              }"
+            >
+              {{ distribution.status }}
+            </span>
+          </td>
+          <td class="p-4">{{ distribution.bucket }}</td>
+          <td class="p-4">
+            <span
+              class="px-2 py-1 rounded text-xs font-semibold"
+              [ngClass]="{
+                'bg-green-100 text-green-500': distribution.enabled,
+                ' bg-red-100 text-red-500': !distribution.enabled
+              }"
+            >
+              {{ distribution.enabled }}
+            </span>
+          </td>
+          <td class="p-4">
+            <button
+              (click)="deleteDistribution(distribution.identifier)"
+              class="text-red-600 font-medium hover:underline"
+            >
+              Delete
+            </button>
+          </td>
+          <td class="p-4">
+            <button
+              class="px-3 py-1 rounded font-medium text-white"
+              [ngClass]="
+                distribution.enabled
+                  ? 'bg-red-500 hover:bg-red-600'
+                  : 'bg-green-500 hover:bg-green-600'
+              "
+              (click)="
+                toggleDistribution(
+                  distribution.identifier,
+                  !distribution.enabled
+                )
+              "
+            >
+              {{ distribution.enabled ? "Disable" : "Enable" }}
+            </button>
+          </td>
+        </tr>
+      </tbody>
+    </table>
   </div>
 </div>
 
-<app-boot-message 
-[message]="message" 
-[showToast]="showToast">
-</app-boot-message>
+<app-boot-message
+  [message]="message"
+  [showToast]="showToast"
+></app-boot-message>

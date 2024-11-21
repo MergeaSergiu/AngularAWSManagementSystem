@@ -1,12 +1,22 @@
-<div class="toast-container position-absolute p-3 top-0 start-50 translate-middle-x">
-<div class="toast justify-center"  [class.show]="showToast" role="alert" aria-live="assertive" aria-atomic="true">
-  <div class="toast-header">
-    <img src="../../assets/deploy-removebg-preview.png" class="rounded me-2 w-9 h-9">
-    <strong class="me-auto">Notification</strong>
-  </div>
-  <div class="toast-body text-center">
-    {{ message }}
+<div
+  class="toast-container position-absolute p-3 top-0 start-50 translate-middle-x"
+>
+  <div
+    class="toast justify-center"
+    [class.show]="showToast"
+    role="alert"
+    aria-live="assertive"
+    aria-atomic="true"
+  >
+    <div class="toast-header">
+      <img
+        src="../../assets/deploy-removebg-preview.png"
+        class="rounded me-2 w-9 h-9"
+      />
+      <strong class="me-auto">Notification</strong>
+    </div>
+    <div class="toast-body text-center">
+      {{ message }}
+    </div>
   </div>
 </div>
-</div>
-

@@ -7,6 +7,6 @@ import { Component, EventEmitter, Input, Output } from '@angular/core';
 })
 export class BootMessageComponent {
   @Input() message: string = '';
-  @Input() showToast: boolean = false; 
+  @Input() showToast: boolean = false;
 
 }

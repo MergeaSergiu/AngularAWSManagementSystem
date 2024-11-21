@@ -1,98 +1,104 @@
 <div>
-
-    <app-navbar></app-navbar>
-    <!-- Create Bucket Section -->
-    <div class="flex flex-wrap mt-4">
-      <!-- Left Section: Create Bucket -->
-      <div class="w-full flex justify-center mt-40">
-        <div class="flex items-center justify-between bg-gray-200 p-2.5 rounded-md shadow-md w-2/3">
-          <!-- Text -->
-          <p class="text-sm font-semibold text-gray-800">
-            App place
-          </p>
-          <!-- Input and Button -->
-          <div class="flex items-center gap-4">
-            <input
-              #newBucketName
-              id="newBucketName"
-              type="text"
-              placeholder="Enter bucket name"
-              class="border border-gray-300 rounded px-4 py-2 focus:outline-none focus:ring-2 focus:ring-blue-400"
-              style="width: 300px;"
-            />
-            <button
-              (click)="createBucket(newBucketName.value)"
-              class="bg-blue-500 text-white font-semibold py-2 px-3 rounded shadow hover:bg-blue-600 transition duration-200"
-            >
-              Create Bucket
-            </button>
-          </div>
+  <app-navbar></app-navbar>
+  <!-- Create Bucket Section -->
+  <div class="flex flex-wrap mt-4">
+    <!-- Left Section: Create Bucket -->
+    <div class="w-full flex justify-center mt-40">
+      <div
+        class="flex items-center justify-between bg-gray-200 p-2.5 rounded-md shadow-md w-2/3"
+      >
+        <!-- Text -->
+        <p class="text-sm font-semibold text-gray-500">
+          Create a bucket that will storage your project
+        </p>
+        <!-- Input and Button -->
+        <div class="flex items-center gap-4">
+          <input
+            #newBucketName
+            id="newBucketName"
+            type="text"
+            placeholder="Enter bucket name"
+            class="border border-gray-300 rounded px-4 py-2 focus:outline-none focus:ring-2 focus:ring-blue-400"
+            style="width: 200px"
+          />
+          <button
+            (click)="createBucket(newBucketName.value)"
+            class="bg-blue-500 text-white font-semibold py-2 px-3 rounded shadow hover:bg-blue-600 transition duration-200"
+          >
+            Create Bucket
+          </button>
         </div>
       </div>
-      <p class="w-full flex justify-center mt-3" style="color: rgb(250, 156, 156);"> <mat-icon>warning</mat-icon>Each bucket must coresponds to a single application.
-      </p>
+    </div>
+    <p
+      class="w-full flex justify-center mt-3"
+      style="color: rgb(236, 115, 115)"
+    >
+      <mat-icon>warning</mat-icon>Each bucket must coresponds to a single
+      application.
+    </p>
     <div class="w-full flex flex-col items-center mt-20 gap-4">
       <div class="w-2/3">
         <p class="text-lg font-semibold text-gray-700 ml-5">Buckets</p>
-        <p class="w-full flex mt-2" style="color: rgb(242, 166, 166);"> <mat-icon>warning</mat-icon> Only .zip archives are allowed.
+        <p class="w-full flex mt-2" style="color: rgb(236, 115, 115)">
+          <mat-icon>warning</mat-icon> Only .zip archives are allowed to upload.
+        </p>
       </div>
-      <cdk-virtual-scroll-viewport 
-      itemSize="10" 
-      class="virtual-scroll-viewport w-2/3 mb-52" 
-      style="height: 400px;"
-    >
-      <div 
-        *cdkVirtualFor="let bucket of bucketList" 
-        class="bg-gray-200 p-4 rounded-md shadow-md hover:bg-gray-300 transition duration-200 mb-3"
+
+      <cdk-virtual-scroll-viewport
+        itemSize="10"
+        class="virtual-scroll-viewport w-2/3 mb-52"
+        style="height: 400px"
       >
-        <div class="flex justify-between items-center">
-          <!-- Bucket Name -->
-          <div class="text-sm">
-            {{ bucket }}
-          </div>
-  
-          <!-- Actions -->
-          <div class="flex gap-2">
-            <!-- Delete Button -->
-            <button 
-              (click)="deleteBucket(bucket)" 
-              class="bg-red-500 text-white text-sm font-semibold py-1 px-2 rounded hover:bg-red-600 transition duration-100"
-            >
-              Delete
-            </button>
-  
-            <!-- Upload Section -->
-            <div 
-              class="border-dashed border-2 border-slate-600 p-1 rounded-md flex justify-center items-center ml-5"
-              (drop)="onFileDropped($event, bucket)"
-              (dragover)="onDragOver($event)" 
-              (dragleave)="onDragLeave($event)"
-              [class.bg-blue-100]="isDragging"
-              style="max-width: 150px;"
-            >
-              <input 
-                type="file" 
-                #fileInput 
-                hidden 
-                (change)="onFileSelected($event, bucket)" 
-                accept=".zip" 
-              />
-              <button 
-                (click)="fileInput.click()"
-                class="bg-blue-500 text-white text-sm font-semibold py-1 px-2 rounded hover:bg-blue-600 transition duration-200"
+        <div
+          *cdkVirtualFor="let bucket of bucketList"
+          class="bg-gray-200 p-4 rounded-md shadow-md hover:bg-gray-300 transition duration-200 mb-3"
+        >
+          <div class="flex justify-between items-center">
+            <!-- Bucket Name -->
+            <div class="text-sm">
+              {{ bucket }}
+            </div>
+
+            <!-- Actions -->
+            <div class="flex gap-2">
+              <!-- Delete Button -->
+              <button
+                (click)="deleteBucket(bucket)"
+                class="bg-red-500 text-white text-sm font-semibold py-1 px-2 rounded hover:bg-red-600 transition duration-100"
               >
-                Select File
+                Delete
               </button>
+
+              <!-- Upload Section -->
+              <div
+                class="border-dashed border-2 border-slate-600 p-1 rounded-md flex justify-center items-center ml-5"
+                (drop)="onFileDropped($event, bucket)"
+                (dragover)="onDragOver($event)"
+                (dragleave)="onDragLeave($event)"
+                [class.bg-blue-100]="isDragging"
+                style="max-width: 150px"
+              >
+                <input
+                  type="file"
+                  #fileInput
+                  hidden
+                  (change)="onFileSelected($event, bucket)"
+                  accept=".zip"
+                />
+                <button
+                  (click)="fileInput.click()"
+                  class="bg-blue-500 text-white text-sm font-semibold py-1 px-2 rounded hover:bg-blue-600 transition duration-200"
+                >
+                  Select File
+                </button>
+              </div>
             </div>
           </div>
         </div>
-      </div>
-    </cdk-virtual-scroll-viewport>
-      </div>
-      
+      </cdk-virtual-scroll-viewport>
+    </div>
+  </div>
 </div>
-</div>
-<app-boot-message 
-[message]="message" 
-[showToast]="showToast">
+<app-boot-message [message]="message" [showToast]="showToast">
 </app-boot-message>

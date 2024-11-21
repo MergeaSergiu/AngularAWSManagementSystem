@@ -5,28 +5,28 @@ import { Observable } from "rxjs";
 
 
 @Injectable({
-    providedIn: 'root'
-  })
-export class S3BucketService{
+  providedIn: 'root'
+})
+export class S3BucketService {
 
-    constructor(private httpClient: HttpClient){}
+  constructor(private httpClient: HttpClient) { }
 
-    API_PATH = "http://localhost:8080/api/aws/s3";
+  API_PATH = "http://localhost:8080/api/aws/s3";
 
-    public getBucketList(): Observable<string[]> {
-        return this.httpClient.get<string[]>(this.API_PATH + "/buckets");
-    }
+  public getBucketList(): Observable<string[]> {
+    return this.httpClient.get<string[]>(this.API_PATH + "/buckets");
+  }
 
-    public deleteBucket(bucket: string): Observable<string>{
-      const params = new HttpParams().set('bucketName', bucket);
-      return this.httpClient.delete(this.API_PATH + "/buckets", { params, responseType: 'text' });
-    }
+  public deleteBucket(bucket: string): Observable<string> {
+    const params = new HttpParams().set('bucketName', bucket);
+    return this.httpClient.delete(this.API_PATH + "/buckets", { params, responseType: 'text' });
+  }
 
-    public createBucket(bucket: string): Observable<string>{
-      const params = new HttpParams().set('bucketName', bucket);
-      return this.httpClient.post(this.API_PATH + "/buckets", null, {params, responseType: 'text' });
-    }
-    
-    
+  public createBucket(bucket: string): Observable<string> {
+    const params = new HttpParams().set('bucketName', bucket);
+    return this.httpClient.post(this.API_PATH + "/buckets", null, { params, responseType: 'text' });
+  }
+
+
 
 }
