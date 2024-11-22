@@ -1,53 +1,56 @@
-<div>
+<div
+  class="flex flex-col items-center w-full justify-center min-h-screen space-y-8"
+>
   <app-navbar></app-navbar>
   <!-- Create Bucket Section -->
   <div class="flex flex-wrap mt-4">
     <!-- Left Section: Create Bucket -->
-    <div class="w-full flex justify-center mt-40">
+    <div class="w-full flex justify-center mt-24">
       <div
-        class="flex items-center justify-between bg-gray-200 p-2.5 rounded-md shadow-md w-2/3"
+        class="flex items-center justify-between bg-gray-200 p-2.5 rounded-md shadow-md w-full md:w-1/2"
       >
         <!-- Text -->
-        <p class="text-sm font-semibold text-gray-500">
-          Create a bucket that will storage your project
-        </p>
+        <p class="text-sm font-semibold text-gray-500">Create bucket</p>
         <!-- Input and Button -->
         <div class="flex items-center gap-4">
           <input
             #newBucketName
             id="newBucketName"
             type="text"
-            placeholder="Enter bucket name"
+            placeholder="Bucket name"
             class="border border-gray-300 rounded px-4 py-2 focus:outline-none focus:ring-2 focus:ring-blue-400"
-            style="width: 200px"
+            style="width: 150px"
           />
           <button
             (click)="createBucket(newBucketName.value)"
             class="bg-blue-500 text-white font-semibold py-2 px-3 rounded shadow hover:bg-blue-600 transition duration-200"
           >
-            Create Bucket
+            Create
           </button>
         </div>
       </div>
     </div>
+
     <p
-      class="w-full flex justify-center mt-3"
-      style="color: rgb(236, 115, 115)"
+      class="w-full flex text-sm justify-center font-semibold mt-3 text-red-500"
     >
-      <mat-icon>warning</mat-icon>Each bucket must coresponds to a single
+      <mat-icon>warning</mat-icon> Each bucket must correspond to a single
       application.
     </p>
+
     <div class="w-full flex flex-col items-center mt-20 gap-4">
-      <div class="w-2/3">
-        <p class="text-lg font-semibold text-gray-700 ml-5">Buckets</p>
-        <p class="w-full flex mt-2" style="color: rgb(236, 115, 115)">
+      <div class="w-full md:w-1/2">
+        <p class="text-lg font-semibold text-center text-gray-700 ml-5">
+          Buckets
+        </p>
+        <p class="text-sm font-semibold text-center text-red-500">
           <mat-icon>warning</mat-icon> Only .zip archives are allowed to upload.
         </p>
       </div>
 
       <cdk-virtual-scroll-viewport
         itemSize="10"
-        class="virtual-scroll-viewport w-2/3 mb-52"
+        class="virtual-scroll-viewport w-full mb-52"
         style="height: 400px"
       >
         <div
@@ -97,6 +100,22 @@
           </div>
         </div>
       </cdk-virtual-scroll-viewport>
+    </div>
+  </div>
+
+  <div class="bg-gray-900 text-white py-8">
+    <div class="container mx-auto px-4 text-center">
+      <h3 class="text-3xl font-bold mb-8">Upload Instructions</h3>
+      <div class="grid gap-8">
+        <div class="flex flex-col items-center">
+          <p class="text-gray-300">
+            In your project, please move all your images inside the assets
+            folder. In your source code, the images must have the path
+            "assets/image_name". Please make sure that angular.json and
+            package.json are included.
+          </p>
+        </div>
+      </div>
     </div>
   </div>
 </div>

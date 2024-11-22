@@ -1,24 +1,102 @@
-<nav class="navbar navbar-expand-md navbar-dark fixed-top color">
-  <a class="navbar-brand" href="">
-    <img
-      src="../../assets/deploy-removebg-preview.png"
-      width="35"
-      height="35"
-      class="d-inline-block align-top"
-      alt=""
-    />
-    App Deployer
-  </a>
-
-  <div class="ml-20">
-    <button type="button" class="btn" (click)="goToBucketsDashboard()">
-      Buckets Dashboard
-    </button>
-    <button type="button" class="btn" (click)="goToAppsDeployment()">
-      Apps Deployment
-    </button>
-    <button type="button" class="btn-log" (click)="logout()">
-      Logout <mat-icon>exit_to_app</mat-icon>
-    </button>
-  </div>
-</nav>
+<div class="w-screen bg-gray-800 text-white">
+  <nav class="bg-gray-800 fixed-top">
+    <div class="mx-auto max-w-7xl px-2 sm:px-6 lg:px-8">
+      <div class="relative flex h-16 items-center justify-between">
+        <!-- Mobile menu button -->
+        <div class="absolute inset-y-0 left-0 flex items-center sm:hidden">
+          <button
+            type="button"
+            class="inline-flex items-center justify-center rounded-md p-2 text-gray-400 hover:bg-gray-700 hover:text-white focus:outline-none focus:ring-2 focus:ring-inset focus:ring-white"
+            (click)="toggleMenu()"
+          >
+            <span class="sr-only">Open main menu</span>
+            <svg
+              class="block h-6 w-6"
+              xmlns="http://www.w3.org/2000/svg"
+              fill="none"
+              viewBox="0 0 24 24"
+              stroke="currentColor"
+              *ngIf="!menuOpen"
+            >
+              <path
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                stroke-width="2"
+                d="M4 6h16M4 12h16m-7 6h7"
+              />
+            </svg>
+            <svg
+              class="hidden h-6 w-6"
+              xmlns="http://www.w3.org/2000/svg"
+              fill="none"
+              viewBox="0 0 24 24"
+              stroke="currentColor"
+              *ngIf="menuOpen"
+            >
+              <path
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                stroke-width="2"
+                d="M6 18L18 6M6 6l12 12"
+              />
+            </svg>
+          </button>
+        </div>
+        <div
+          class="flex flex-1 items-center justify-center sm:items-stretch sm:justify-start"
+        >
+          <div class="flex shrink-0 items-center"></div>
+          <div class="hidden sm:ml-6 sm:block">
+            <div class="flex space-x-4">
+              <a
+                (click)="goToBucketsDashboard()"
+                class="text-gray-300 hover:bg-gray-700 hover:text-white cursor-pointer rounded-md px-3 py-2 text-sm font-medium no-underline"
+              >
+                Buckets Dashboard
+              </a>
+              <a
+                (click)="goToAppsDeployment()"
+                class="text-gray-300 hover:bg-gray-700 hover:text-white cursor-pointer rounded-md px-3 py-2 text-sm font-medium no-underline"
+              >
+                Apps Deployment
+              </a>
+              <a
+                (click)="logout()"
+                class="text-gray-300 hover:bg-red-500 hover:text-white cursor-pointer rounded-md px-3 py-2 text-sm font-medium no-underline"
+              >
+                Logout
+              </a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <!-- Mobile menu -->
+    <div
+      class="sm:hidden"
+      *ngIf="menuOpen"
+      class="transition-all ease-in-out duration-300"
+    >
+      <div class="space-y-1 px-2 pb-3 pt-2 bg-gray-700 rounded-md shadow-lg">
+        <a
+          (click)="goToBucketsDashboard()"
+          class="block text-gray-300 hover:bg-gray-600 hover:text-white cursor-pointer rounded-md px-3 py-2 text-base font-medium no-underline"
+        >
+          Buckets Dashboard
+        </a>
+        <a
+          (click)="goToAppsDeployment()"
+          class="block text-gray-300 hover:bg-gray-600 hover:text-white cursor-pointer rounded-md px-3 py-2 text-base font-medium no-underline"
+        >
+          Apps Deployment
+        </a>
+        <a
+          (click)="logout()"
+          class="block text-gray-300 hover:bg-red-500 hover:text-white cursor-pointer rounded-md px-3 py-2 text-base font-medium no-underline"
+        >
+          Logout
+        </a>
+      </div>
+    </div>
+  </nav>
+</div>

@@ -11,6 +11,8 @@ export class NavbarComponent {
 
   constructor(private registrationService: RegistrationService, private router: Router) { }
 
+  isOpen = false;
+
   logout() {
     this.registrationService.logedOut();
   }
@@ -23,6 +25,12 @@ export class NavbarComponent {
   }
   goHome() {
     this.router.navigate([''])
+  }
+
+  menuOpen = false;
+
+  toggleMenu() {
+    this.menuOpen = !this.menuOpen;
   }
 
 

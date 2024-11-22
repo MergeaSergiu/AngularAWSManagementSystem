@@ -24,7 +24,7 @@ export class UserDashboardComponent implements OnInit {
   deleteBucket(bucketName: string) {
     this.s3BucketService.deleteBucket(bucketName).subscribe({
       next: (response) => {
-        this.message = response;
+        this.message = response.message;
         this.showToast = true;
         setTimeout(() => {
           this.showToast = false;  // Hide the toast after 3 seconds
@@ -53,12 +53,13 @@ export class UserDashboardComponent implements OnInit {
   createBucket(bucketName: string) {
     this.s3BucketService.createBucket(bucketName).subscribe({
       next: (response) => {
-        this.message = response;
+        this.message = response.message;
         this.showToast = true;
-        this.getBucketList();
+
         setTimeout(() => {
           this.showToast = false;  // Hide the toast after 3 seconds
         }, 3000);
+        this.getBucketList();
       },
       error: (error) => {
         this.message = error;

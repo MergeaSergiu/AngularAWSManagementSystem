@@ -29,7 +29,6 @@ export class CloudFrontComponentComponent implements OnInit {
   }
 
   deleteDistribution(identifier: string) {
-
     this.message = "Disitribution is deleting. It will take a few minutes";
     this.showToast = true;
     setTimeout(() => {
@@ -54,7 +53,7 @@ export class CloudFrontComponentComponent implements OnInit {
   toggleDistribution(identifier: string, command: boolean) {
     this.cloudFrontService.updateDistributionStatus(identifier, command).subscribe({
       next: (response) => {
-        this.message = response;
+        this.message = response.message;
         this.showToast = true;
         this.getDistributionList();
         setTimeout(() => {

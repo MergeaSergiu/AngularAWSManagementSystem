@@ -2,6 +2,7 @@ import { HttpClient, HttpHeaders, HttpParams } from "@angular/common/http";
 import { Injectable } from "@angular/core";
 import { Router } from "@angular/router";
 import { Observable } from "rxjs";
+import { ResponseMessage } from "../models/response-message.model";
 
 
 @Injectable({
@@ -17,14 +18,14 @@ export class S3BucketService {
     return this.httpClient.get<string[]>(this.API_PATH + "/buckets");
   }
 
-  public deleteBucket(bucket: string): Observable<string> {
+  public deleteBucket(bucket: string): Observable<ResponseMessage> {
     const params = new HttpParams().set('bucketName', bucket);
-    return this.httpClient.delete(this.API_PATH + "/buckets", { params, responseType: 'text' });
+    return this.httpClient.delete<ResponseMessage>(this.API_PATH + "/buckets", { params });
   }
 
-  public createBucket(bucket: string): Observable<string> {
+  public createBucket(bucket: string): Observable<ResponseMessage> {
     const params = new HttpParams().set('bucketName', bucket);
-    return this.httpClient.post(this.API_PATH + "/buckets", null, { params, responseType: 'text' });
+    return this.httpClient.post<ResponseMessage>(this.API_PATH + "/buckets", null, { params });
   }
 
 

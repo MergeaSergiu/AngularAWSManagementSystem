@@ -1,20 +1,13 @@
-<div class="relative min-h-screen">
+<div
+  class="flex flex-col items-center w-full justify-center min-h-screen space-y-8"
+>
   <app-navbar></app-navbar>
 
-  <!-- Header -->
-  <div class="mx-auto max-w-1xl text-center mt-40">
-    <h2 class="text-3xl font-semibold text-gray-700 sm:text-4xl mb-10">
-      Your Applications
-    </h2>
-  </div>
-
-  <!-- Table -->
-  <div class="w-full flex justify-center mt-24 overflow-x-auto">
-    <table
-      class="table-auto border border-gray-200 shadow-sm rounded-lg w-4/5 text-left bg-white"
-    >
+  <!-- Table with horizontal scrolling for small screens -->
+  <div class="w-full overflow-x-auto">
+    <table class="center border border-gray-200 shadow-sm rounded-lg bg-white">
       <thead class="bg-gray-100">
-        <tr class="text-gray-600 font-semibold text-sm uppercase tracking-wide">
+        <tr class="text-gray-600 font-semibold text-sm uppercase">
           <th class="p-4">Domain Name</th>
           <th class="p-4">App Status</th>
           <th class="p-4">Bucket</th>
@@ -33,9 +26,9 @@
             <span
               class="px-2 py-1 rounded text-xs font-semibold"
               [ngClass]="{
-                'bg-green-100 text-green-700': distribution.status === 'Deployed',
-                'bg-yellow-100 text-yellow-700': distribution.status === 'InProgress',
-              }"
+                  'bg-green-100 text-green-700': distribution.status === 'Deployed',
+                  'bg-yellow-100 text-yellow-700': distribution.status === 'InProgress',
+                }"
             >
               {{ distribution.status }}
             </span>
@@ -46,7 +39,7 @@
               class="px-2 py-1 rounded text-xs font-semibold"
               [ngClass]="{
                 'bg-green-100 text-green-500': distribution.enabled,
-                ' bg-red-100 text-red-500': !distribution.enabled
+                'bg-red-100 text-red-500': !distribution.enabled
               }"
             >
               {{ distribution.enabled }}
