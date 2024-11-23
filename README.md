@@ -16,6 +16,15 @@ This is the Angular frontend application that allows users to deploy their Angul
   TypeScript: For type-safe development.
   Tailwind CSS: For a modern, responsive design.
 
+  # UI
+  ![image](https://github.com/user-attachments/assets/54815d26-486e-4997-9703-cbe91c30997a)
+  ![image](https://github.com/user-attachments/assets/611d59e3-2ff5-49ab-888d-c4efdb306dae)
+  ![image](https://github.com/user-attachments/assets/7932b064-285e-4fbd-8338-95b16e93e73b)
+  ![image](https://github.com/user-attachments/assets/a7a24a4b-673f-427a-aa03-de9f46d5410a)
+
+
+
+
 ## Development server
 
 Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The application will automatically reload if you change any of the source files.
