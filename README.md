@@ -4,12 +4,13 @@ This project was generated with [Angular CLI](https://github.com/angular/angular
 This is the Angular frontend application that allows users to deploy their Angular projects through a user-friendly interface. The app connects to a Spring Boot API backend to handle the deployment process, including uploading ZIP files, triggering the build process, and managing deployments.
 
 ## Description
-  # Features
-  Create bucket: Create S3 Buckets to store the application files.
-  File Upload: Upload Angular project ZIP files directly from the interface.
-  Deployment Status: View the status of deployed applications.
-  Integration with Backend: Communicates with the Spring Boot API for deployment and management.
-  Responsive UI: Built with Angular and styled for mobile and desktop compatibility.
+  # Features:
+  
+  # Create bucket: Create S3 Buckets to store the application files.
+  # File Upload: Upload Angular project ZIP files directly from the interface.
+  # Deployment Status: View the status of deployed applications.
+  # Integration with Backend: Communicates with the Spring Boot API for deployment and management.
+  # Responsive UI: Built with Angular and styled for mobile and desktop compatibility.
 
   # Technologies Used
   Angular: Frontend framework for building the UI.
