@@ -6,11 +6,16 @@ This is the Angular frontend application that allows users to deploy their Angul
 ## Description
   # Features:
   
-  # Create bucket: Create S3 Buckets to store the application files.
-  # File Upload: Upload Angular project ZIP files directly from the interface.
-  # Deployment Status: View the status of deployed applications.
-  # Integration with Backend: Communicates with the Spring Boot API for deployment and management.
-  # Responsive UI: Built with Angular and styled for mobile and desktop compatibility.
+   ###
+   Create bucket: Create S3 Buckets to store the application files.
+   ###
+   File Upload: Upload Angular project ZIP files directly from the interface.
+   ####
+   Deployment Status: View the status of deployed applications.
+   ####
+   Integration with Backend: Communicates with the Spring Boot API for deployment and management.
+   ###
+   Responsive UI: Built with Angular and styled for mobile and desktop compatibility.
 
   # Technologies Used
   Angular: Frontend framework for building the UI.
